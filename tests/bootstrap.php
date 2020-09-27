@@ -1,6 +1,7 @@
 <?php
+declare(strict_types=1);
 
-ini_set('display_errors', 1);
+ini_set('display_errors', 'on');
 
 if (defined("AUTOLOAD_PATH")) {
     if (is_file(__DIR__ . '/../' .AUTOLOAD_PATH)) {
