@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Go\ParserReflection;
 
 use Stub\Issue44\Locator;
+use TypeError;
 
 class ReflectionFileTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,21 +24,9 @@ class ReflectionFileTest extends \PHPUnit_Framework_TestCase
         $this->parsedRefFile = $reflectionFile;
     }
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage $fileName must be a string, but a array was passed
-     */
-    public function testBadFilenameTypeArray()
-    {
-        new ReflectionFile([1, 3, 5, 7]);
-    }
-
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage $fileName must be a string, but a object was passed
-     */
     public function testBadFilenameTypeObject()
     {
+        $this->setExpectedException(TypeError::class);
         new ReflectionFile(new \DateTime());
     }
 
